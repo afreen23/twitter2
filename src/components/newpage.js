@@ -13,7 +13,9 @@ import Button from 'material-ui/Button';
 import Tweet from './Tweet';
 import SimpleCard from './rightDashboard';
 import Avatar from 'material-ui/Avatar';
-import SimpleMediaCard from './leftDashboard'
+import SimpleMediaCard from './leftDashboard';
+import MoreVertIcon from 'material-ui-icons/MoreVert';
+
 
 function TabContainer(props) {
   return (
@@ -34,15 +36,30 @@ const styles = theme => ({
 
   },
   appbar : {
+  	height: '46px',  	
+  },
+  appbar2: {
   	height: '46px',
-	border: '1px solid black'  	
+  	top: 48, 	
+  },
+  appbar3: {
+  	height: '46px',
+  	top: 95, 	
   },
   toolbar: {
   	flex: 1,
   	height:'46px',
   	marginTop: 0,
   	alignItems: 'baseline',
-  	justifyContent: 'space-around',
+  	justifyContent: 'space-between',
+  	
+  },
+    toolbarBottom: {
+  	flex: 1,
+  	height:'46px',
+  	marginTop: 0,
+  	alignItems: 'baseline',
+  	justifyContent: 'space-between',
   	
   },
   twitter: {
@@ -87,7 +104,7 @@ const styles = theme => ({
 }
 });
 
-class BasicTabs extends React.Component {
+class Adhaar extends React.Component {
   state = {
     value: 0,
     dataSource: ['adhaar']
@@ -106,24 +123,48 @@ class BasicTabs extends React.Component {
         <Grid item xs={12}>
           <AppBar className={classes.appbar}>
            <Toolbar className={classes.toolbar} disableGutters='true'>
-            <Tabs value={value} onChange={this.handleChange} className={classes.leftNav}>
-              <Tab label="Home" className={classes.tab} />
-              <Tab label="Moments" className={classes.tab}/>
-              <Tab label="Messages" className={classes.tab}/>
-              <Tab label="Notifications" href="#basic-tabs" className={classes.tab} />
-            </Tabs>
-            <div className={classes.twitter}>
-             <Icon className="fa fa-twitter" color="accent"></Icon>
-            </div>
-            <div className={classes.rightNav}>
-  	          <IntegrationAutoSuggest/>
-  	           <Avatar alt="Remy Sharp" src="images/googledtudents.jpg" className={classes.avatar} />
-  	          <Button color="accent" className={classes.button}>
-  	            Tweet
-  	          </Button>
-            
-           </div>
-            </Toolbar>
+				<Tabs value={value} onChange={this.handleChange} className={classes.leftNav}>
+					<Tab label="Home" className={classes.tab} />
+					<Tab label="Moments" className={classes.tab}/>
+					<Tab label="Messages" className={classes.tab}/>
+					<Tab label="Notifications" href="#basic-tabs" className={classes.tab} />
+				</Tabs>
+				<div className={classes.twitter}>
+					<Icon className="fa fa-twitter" color="accent"></Icon>
+				</div>
+				<div className={classes.rightNav}>
+					<IntegrationAutoSuggest/>
+					<Avatar alt="Remy Sharp" src="images/googledtudents.jpg" className={classes.avatar} />
+					<Button color="accent" className={classes.button}>
+					Tweet
+					</Button>
+				</div>
+           </Toolbar>
+          </AppBar>
+        </Grid>
+        <Grid item xs={12}>
+          <AppBar className={classes.appbar2} position='absolute' color='accent'>
+           <Toolbar disableGutters='true'>
+				<Typography type='display1'>#adhaar</Typography>
+           </Toolbar>
+          </AppBar>
+        </Grid>
+        <Grid item xs={12}>
+          <AppBar className={classes.appbar3} position='absolute'>
+           <Toolbar className={classes.toolbar}>
+				<Tabs value={value} onChange={this.handleChange} className={classes.leftNav}>
+					<Tab label="Top" className={classes.tab} />
+					<Tab label="Latest" className={classes.tab}/>
+					<Tab label="People" className={classes.tab}/>
+					<Tab label="Photos" href="#basic-tabs" className={classes.tab} />
+					<Tab label="Videos" className={classes.tab}/>
+					<Tab label="News" className={classes.tab}/>
+					<Tab label="Broadcast" className={classes.tab}/>
+				</Tabs>
+				<Button>
+					<MoreVertIcon />
+				</Button>	
+           </Toolbar>
           </AppBar>
         </Grid>
         <Grid item xs={3}>
@@ -138,19 +179,13 @@ class BasicTabs extends React.Component {
           {value === 2 && <Tweet />}
           {value === 3 && <Tweet />}
         </Grid>
-        <Grid item xs={3}>
-          {value === 0 && <SimpleCard/>}
-          {value === 1 && <TabContainer>Item Two</TabContainer>}
-          {value === 2 && <TabContainer>Item Three</TabContainer>}
-          {value === 3 && <TabContainer>Item Four</TabContainer>}
-        </Grid>
       </Grid>
     );
   }
 }
 
-BasicTabs.propTypes = {
+Adhaar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BasicTabs);
+export default withStyles(styles)(Adhaar);

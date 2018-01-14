@@ -7,18 +7,24 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
+import Tweet from './Tweet';
+import Adhaar from './newpage.js';
+import {Route} from'react-router-dom';
+import { Link } from 'react-router-dom';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
 
 const suggestions = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
+  { label: '#adhaar' },
+  { label: '#Aland Islands' },
+  { label: '#Albania' },
+  { label: '#Algeria' },
+  { label: '#American Samoa' },
+  { label: '#Andorra' },
+  { label: '#Angola' },
+  { label: '#Anguilla' },
+  { label: '#Antarctica' },
+  { label: '#Antigua and Barbuda' },
   { label: 'Argentina' },
   { label: 'Armenia' },
   { label: 'Aruba' },
@@ -67,9 +73,13 @@ function renderInput(inputProps) {
 function renderSuggestion(suggestion, { query, isHighlighted }) {
   const matches = match(suggestion.label, query);
   const parts = parse(suggestion.label, matches);
+  
+  function handleSuggestionClick() {
+        
+  }
 
   return (
-    <MenuItem selected={isHighlighted} component="div">
+    <MenuItem  selected={isHighlighted} component="div">
       <div>
         {parts.map((part, index) => {
           return part.highlight ? (
@@ -120,9 +130,12 @@ function getSuggestions(value) {
       });
 }
 
+function onSuggestionSelected(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {
+
+}
+
 const styles = theme => ({
-  container: {
-    
+  container: { 
     position: 'relative',
     height: 200,
   },
@@ -144,6 +157,9 @@ const styles = theme => ({
   textField: {
     width: '',
   },
+  div: {
+    display:'flex'
+  }
 });
 
 class IntegrationAutosuggest extends React.Component {
@@ -174,6 +190,7 @@ class IntegrationAutosuggest extends React.Component {
     const { classes } = this.props;
 
     return (
+    <div className={classes.div}>  
       <Autosuggest
         theme={{
           container: classes.container,
@@ -188,6 +205,7 @@ class IntegrationAutosuggest extends React.Component {
         renderSuggestionsContainer={renderSuggestionsContainer}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
+        onSuggestionSelected={onSuggestionSelected}
         inputProps={{
           autoFocus: true,
           classes,
@@ -196,6 +214,8 @@ class IntegrationAutosuggest extends React.Component {
           onChange: this.handleChange,
         }}
       />
+      <Link to='/search'><IconButton className='fa fa-search'></IconButton></Link>
+    </div>  
     );
   }
 }
