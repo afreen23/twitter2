@@ -1,20 +1,31 @@
 import React from'react';
-import Card,{CardContent,CardHeader,CardMedia} from 'material-ui/Card';
+import Card,{CardContent,CardHeader,CardMedia,CardActions} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
-import hasura from './components/hasura.jpg'
-import hasuratweet from './components/hasuratweet.png';
+import Grid from 'material-ui/Grid';
+import { withStyles } from 'material-ui/styles';
+import Icon from 'material-ui/Icon';
+import Divider from 'material-ui/Divider';
+
+const styles={
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  }
+}
 
 
-export default class Feed extends React.Component {
-  render() {
+function Feed(props) {
+  const {classes}=props;
+    const bull = <span className={classes.bullet}>•</span>;
     return(
       <div>
         <Card square='true'>
-            <CardHeader
-              avatar={<Avatar src={hasura}/>}
-              title='Hasura'
-              subheader='@HasuraHQ'
+             <CardHeader
+              avatar={<Avatar src='images/hasura.jpg'/>}
+              title='Google Studdents'
+              subheader='@googlestudents'
             />
             <CardContent>
               <Typography>
@@ -22,14 +33,21 @@ export default class Feed extends React.Component {
                 #appdev #productivity
               </Typography>
               <CardMedia
-                image={hasuratweet}
+                image='images/hasuratweet.png'
                 style={{height: 350}}
               />
+              <CardActions>
+                <Icon className='fa fa-comment-o'></Icon>
+                <Icon className='fa fa-retweet'></Icon>
+                <Icon className='fa fa-heart-o'></Icon>
+                <Icon className='fa fa-envelope-o'></Icon>
+              </CardActions>
             </CardContent>
         </Card>
+        <Divider/>
          <Card square='true'>
             <CardHeader
-              avatar={<Avatar src={hasura}/>}
+              avatar={<Avatar src='images/hasura.jpg'/>}
               title='Google Studdents'
               subheader='@googlestudents'
             />
@@ -38,11 +56,42 @@ export default class Feed extends React.Component {
                Don't let another year pass by—if you're passionate about something, don't worry about what others will say. Go after it with everything you've got! #TuesdayThoughts
               </Typography>
               <CardMedia
-                image={hasuratweet}
+                image='images/hasuratweet.png'
                 style={{height: 350}}
               />
+              <CardActions>
+                <Icon className='fa fa-comment-o'></Icon>
+                <Icon className='fa fa-retweet'></Icon>
+                <Icon className='fa fa-heart-o'></Icon>
+                <Icon className='fa fa-envelope-o'></Icon>
+              </CardActions>
+            </CardContent>
+        </Card>
+        <Divider/>
+        <Card square='true'>
+            <CardHeader
+              avatar={<Avatar src='images/hasura.jpg'/>}
+              title='Google Studdents'
+              subheader='@googlestudents'
+            />
+            <CardContent>
+              <Typography>
+               Don't let another year pass by—if you're passionate about something, don't worry about what others will say. Go after it with everything you've got! #TuesdayThoughts
+              </Typography>
+              <CardMedia
+                image='images/hasuratweet.png'
+                style={{height: 350}}
+              />
+              <CardActions>
+                <Icon className='fa fa-comment-o'></Icon>
+                <Icon className='fa fa-retweet'></Icon>
+                <Icon className='fa fa-heart-o'></Icon>
+                <Icon className='fa fa-envelope-o'></Icon>
+              </CardActions>
             </CardContent>
         </Card>
       </div>);
-  }
+
 }
+
+export default withStyles(styles)(Feed);

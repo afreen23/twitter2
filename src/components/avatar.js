@@ -8,7 +8,8 @@ import Avatar from 'material-ui/Avatar';
 
 const styles = {
   avatar: {
-    margin: 0,
+      border: '1px solid black', 
+      margin: '10px 0px ',
     
   },
   bigAvatar: {
@@ -21,7 +22,7 @@ function ImageAvatars(props) {
   const { classes } = props;
   return (
    
-      <Avatar alt="Remy Sharp" src="images/hasura.jpg" className={classes.avatar} />
+      <Avatar alt="Remy Sharp" src="images/googledtudents.jpg" className={classes.avatar} />
    
   );
 }

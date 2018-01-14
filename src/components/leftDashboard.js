@@ -1,0 +1,114 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Card, { CardActions, CardContent, CardMedia, CardHeader } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+import Avatar from 'material-ui/Avatar';
+
+const styles = theme=>({
+  card: {
+    maxWidth: 345,
+   
+  },
+  media: {
+    height: 110,
+  },
+  avatar: {
+    margin: '-60px 0 0 0',
+    width: 90,
+    height: 90,
+    align: 'left'
+  },
+   title: {
+    fontWeight: 600,
+    marginTop: -10
+  },
+  subtitle: {
+    fontSize: 15
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  trends: {
+    fontWeight: 'bold',
+    color: theme.palette.secondary,
+    paddingTop:10
+  },
+  link: {
+  '&:hover':{
+    textDecoration: 'underline',
+    textDecorationColor: theme.palette.secondary
+  },
+  textDecoration: 'none',
+  color: theme.palette.secondary,
+  
+},
+});
+
+function SimpleMediaCard(props) {
+  const { classes } = props;
+  const bull = <span className={classes.bullet}>•</span>;
+  return (
+    <Grid container>
+     <Grid item xs={12}>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="images/but-first-lets-code-1.png"
+          title="Contemplative Reptile"
+        />
+        <CardHeader
+          avatar={<Avatar alt="Remy Sharp" src="images/googledtudents.jpg" className={classes.avatar} />}
+          title={<Typography type='title' className={classes.title}>Afreen Rahman</Typography>}
+          subheader={<Typography type='caption' className={classes.subtitle}>@aren_rahman</Typography>}
+         /> 
+         <CardContent style={{display:'flex',justifyContent: 'space-around'}}>
+           <div style={{display:'flex',flexDirection:'column'}}><p style={{margin:0}}><b>Tweets</b></p><p style={{margin:0}}>25</p></div>
+           <div style={{display:'flex',flexDirection:'column'}}><p style={{margin:0}}><b>Following</b></p><p style={{margin:0}}>25</p></div>
+           <div style={{display:'flex',flexDirection:'column'}}><p style={{margin:0}}><b>Followers</b></p><p style={{margin:0}}>25</p></div>
+         </CardContent>
+      </Card>
+     </Grid>
+     <Grid item xs={12}>
+        <Card>
+            <CardContent>
+            <Grid container spacing={8} alignItems='center' >
+            <Grid item xs={7}>
+              <Typography type="title">Trends for you</Typography>
+            </Grid>
+            <Grid item xs={5}>
+              <Typography type='caption'>
+                {bull}<a className={classes.link} href=''>Change</a>
+              </Typography>
+            </Grid>
+          </Grid>
+          </CardContent>
+          <CardContent style={{paddingTop:0}}>
+            <Typography type='body1' className={classes.trends}>#HappyLohri</Typography>
+            <Typography type='caption'>India's biggest names celebrate the festival</Typography>
+            <Typography type='body1' className={classes.trends}>#HappyLohri</Typography>
+            <Typography type='caption'>India's biggest names celebrate the festival</Typography>
+            <Typography type='body1' className={classes.trends}>#HappyLohri</Typography>
+            <Typography type='caption'>India's biggest names celebrate the festival</Typography>
+            <Typography type='body1' className={classes.trends}>#HappyLohri</Typography>
+            <Typography type='caption'>India's biggest names celebrate the festival</Typography>
+            <Typography type='body1' className={classes.trends}>#HappyLohri</Typography>
+            <Typography type='caption'>India's biggest names celebrate the festival</Typography>
+            <Typography type='body1' className={classes.trends}>#HappyLohri</Typography>
+            <Typography type='caption'>India's biggest names celebrate the festival</Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
+  );
+}
+
+SimpleMediaCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(SimpleMediaCard);
