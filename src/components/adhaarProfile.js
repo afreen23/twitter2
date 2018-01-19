@@ -12,7 +12,7 @@ const styles = theme=>({
     maxWidth: 345 
   },
   media: {
-    height: 110,
+    height: 250,
   },
   avatar: {
     margin: '-60px 0 0 0',
@@ -43,38 +43,36 @@ const styles = theme=>({
 },
 });
 
-function LeftDashboard(props) {
+function AdhaarProfile (props) {
   const { classes } = props;
   return (
-    <Grid container>
-     <Grid item xs={12}>
-      <Card className={classes.card}>
+   
+      <Card square>
         <CardMedia
           className={classes.media}
-          image="images/but-first-lets-code-1.png"
+          image="images/headerphoto.jpg"
           title="Contemplative Reptile"
         />
-        <CardHeader
-          avatar={<Avatar alt="Profile Pic" src="images/profileimage.jpg" className={classes.avatar} />}
-          title={<Typography type='title' className={classes.title}>Afreen Rahman</Typography>}
-          subheader={<Typography type='caption' className={classes.subtitle}>@aren_rahman</Typography>}
-         /> 
+          <CardHeader
+          avatar={<Avatar alt="Profile Pic" src="images/adhaar.jpg" className={classes.avatar} />}
+          /> 
          <CardContent style={{display:'flex',justifyContent: 'space-around'}}>
            <div style={{display:'flex',flexDirection:'column'}}><p style={{margin:0}}><b>Tweets</b></p><p style={{margin:0}}>25</p></div>
            <div style={{display:'flex',flexDirection:'column'}}><p style={{margin:0}}><b>Following</b></p><p style={{margin:0}}>25</p></div>
            <div style={{display:'flex',flexDirection:'column'}}><p style={{margin:0}}><b>Followers</b></p><p style={{margin:0}}>25</p></div>
          </CardContent>
+          <CardHeader
+          title={<Typography type='title' className={classes.title}>Afreen Rahman</Typography>}
+          subheader={<Typography type='caption' className={classes.subtitle}>@aren_rahman</Typography>}
+         /> 
       </Card>
-     </Grid>
-     <Grid item xs={12}>
-        <TrendsCard/>
-      </Grid>
-    </Grid>
+ 
+   
   );
 }
 
-LeftDashboard.propTypes = {
+AdhaarProfile .propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LeftDashboard);
+export default withStyles(styles)(AdhaarProfile );

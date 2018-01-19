@@ -5,62 +5,38 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Grid from 'material-ui/Grid';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
 import Icon from 'material-ui/Icon';
 import IntegrationAutoSuggest from './search';
-import ImageAvatars from './avatar';
 import Button from 'material-ui/Button';
 import Tweet from './Tweet';
-import SimpleCard from './rightDashboard';
+import RightDashboard from './rightDashboard';
 import Avatar from 'material-ui/Avatar';
-import SimpleMediaCard from './leftDashboard'
+import LeftDashboard from './leftDashboard';
+import AddTweet from './newTweet.js';
 
-function TabContainer(props) {
-  return (
-    <Typography component='div'>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 const styles = theme => ({
-  root: {
-    marginTop: 0,
-    backgroundColor: theme.palette.background.paper,
-
-  },
   appbar : {
   	height: '46px',
-	border: '1px solid black'  	
+	  backgroundColor: theme.palette.primary[50],
+    elevation: 0
   },
-  toolbar: {
-  	flex: 1,
-  	height:'46px',
-  	marginTop: 0,
-  	alignItems: 'baseline',
-  	justifyContent: 'space-around',
-  	
+  avatar: {
+    
   },
-  twitter: {
-  	
-  	
+  button: {
+    borderRadius: '100px',
+    textTransform: 'capitalize',
+    color:'white',
+    backgroundColor: theme.palette.secondary.A400,
+    padding: 0,
+    marginTop: 5
   },
   leftNav: {
-  	
   	centered: {
   	justifyContent: 'flex-start',
-
-  	
   },
   	flexBasis: '40%',
-  	label: {
-  	textTransform:'capitalize',
-  	
-  	}
   },
   rightNav: {
   	marginTop: 0,
@@ -70,33 +46,36 @@ const styles = theme => ({
   	justifyContent:'space-around',
   	alignItems: 'flex-start',
   	alignSelf: 'flex-start',
-
   },
-  button: {
-  	borderRadius: '100px',
-  	textTransform: 'capitalize',
-  	color:'white',
-  	backgroundColor: theme.palette.secondary.A400,
-    padding: 0
-
+  root: {
+    marginTop: 0,
   },
   tab : {
-  
-  	minWidth: '10px'
-  
-}
+  	minWidth: '10px',
+    textTransform:'capitalize',
+    fontWeight: 'bold'
+  },
+  toolbar: {
+    flex: 1,
+    height:'46px',
+    marginTop: 0,
+    alignItems: 'baseline',
+    justifyContent: 'space-around',
+    
+  },
+  twitter: {
+    color: theme.palette.accent,
+  }
 });
 
-class BasicTabs extends React.Component {
+
+class Header extends React.Component {
   state = {
     value: 0,
-    dataSource: ['adhaar']
   };
-
   handleChange = (event, value) => {
     this.setState({ value });
   };
-
   render() {
     const { classes } = this.props;
     const { value } = this.state;
@@ -105,9 +84,9 @@ class BasicTabs extends React.Component {
       <Grid container className={classes.root} spacing={40}>
         <Grid item xs={12}>
           <AppBar className={classes.appbar}>
-           <Toolbar className={classes.toolbar} disableGutters='true'>
-            <Tabs value={value} onChange={this.handleChange} className={classes.leftNav}>
-              <Tab label="Home" className={classes.tab} />
+           <Toolbar className={classes.toolbar}>
+            <Tabs value={value} onChange={this.handleChange} className={classes.leftNav} indicatorColor='accent'>
+              <Tab label="Home" href='/'className={classes.tab} />
               <Tab label="Moments" className={classes.tab}/>
               <Tab label="Messages" className={classes.tab}/>
               <Tab label="Notifications" href="#basic-tabs" className={classes.tab} />
@@ -117,40 +96,39 @@ class BasicTabs extends React.Component {
             </div>
             <div className={classes.rightNav}>
   	          <IntegrationAutoSuggest/>
-  	           <Avatar alt="Remy Sharp" src="images/googledtudents.jpg" className={classes.avatar} />
+  	          <Avatar alt="Remy Sharp" src="images/profileimage.jpg" className={classes.avatar} />
   	          <Button color="accent" className={classes.button}>
   	            Tweet
-  	          </Button>
-            
+  	          </Button> 
            </div>
             </Toolbar>
           </AppBar>
         </Grid>
         <Grid item xs={3}>
-          {value === 0 && <SimpleMediaCard/>}
-          {value === 1 && <TabContainer>Item Two</TabContainer>}
-          {value === 2 && <TabContainer>Item Three</TabContainer>}
-          {value === 3 && <TabContainer>Item Four</TabContainer>}
+          {value === 0 && <LeftDashboard/>}
+          {value === 1 && <LeftDashboard/>}
+          {value === 2 && <LeftDashboard/>}
+          {value === 3 && <LeftDashboard/>}
         </Grid>
         <Grid item xs={6}>
-          {value === 0 && <Tweet />}
-          {value === 1 && <Tweet />}
-          {value === 2 && <Tweet />}
-          {value === 3 && <Tweet />}
+          {value === 0 && <div><AddTweet/><Tweet /></div>}
+          {value === 1 && <div><AddTweet/><Tweet /></div>}
+          {value === 2 && <div><AddTweet/><Tweet /></div>}
+          {value === 3 && <div><AddTweet/><Tweet /></div>}
         </Grid>
         <Grid item xs={3}>
-          {value === 0 && <SimpleCard/>}
-          {value === 1 && <TabContainer>Item Two</TabContainer>}
-          {value === 2 && <TabContainer>Item Three</TabContainer>}
-          {value === 3 && <TabContainer>Item Four</TabContainer>}
+          {value === 0 && <RightDashboard/>}
+          {value === 1 && <RightDashboard/>}
+          {value === 2 && <RightDashboard/>}
+          {value === 3 && <RightDashboard/>}
         </Grid>
       </Grid>
     );
   }
 }
 
-BasicTabs.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BasicTabs);
+export default withStyles(styles)(Header);

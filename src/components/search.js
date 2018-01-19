@@ -7,12 +7,11 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
-import Tweet from './Tweet';
-import Adhaar from './newpage.js';
-import {Route} from'react-router-dom';
-import { Link } from 'react-router-dom';
-import Button from 'material-ui/Button';
+import { Link} from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
+import classNames from 'classnames';
+import { InputAdornment } from 'material-ui/Input';
+
 
 const suggestions = [
   { label: '#adhaar' },
@@ -54,19 +53,26 @@ const suggestions = [
 function renderInput(inputProps) {
   const { classes, autoFocus, value, ref, ...other } = inputProps;
 
+  
   return (
     <TextField
-      autoFocus={autoFocus}
+      type='search'
       className={classes.textField}
       value={value}
       inputRef={ref}
       InputProps={{
+        disableUnderline:true,
+        endAdornment:<InputAdornment position='end'><IconButton className={classNames(classes.search,'fa','fa-search')}/></InputAdornment>,
+       
         classes: {
-          input: classes.input,
+          root: classes.textFieldRoot,
+          input: classes.textFieldInput,
         },
         ...other,
       }}
-    />
+    >
+      <IconButton className={classNames(classes.search,'fa','fa-search')}></IconButton>
+    </TextField>
   );
 }
 
@@ -74,12 +80,9 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
   const matches = match(suggestion.label, query);
   const parts = parse(suggestion.label, matches);
   
-  function handleSuggestionClick() {
-        
-  }
 
   return (
-    <MenuItem  selected={isHighlighted} component="div">
+    <Link to={`/search`}><MenuItem  selected={isHighlighted} component="div">
       <div>
         {parts.map((part, index) => {
           return part.highlight ? (
@@ -93,7 +96,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
           );
         })}
       </div>
-    </MenuItem>
+    </MenuItem></Link>
   );
 }
 
@@ -130,14 +133,18 @@ function getSuggestions(value) {
       });
 }
 
-function onSuggestionSelected(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {
-
-}
-
 const styles = theme => ({
   container: { 
     position: 'relative',
     height: 200,
+  },
+  div: {
+    display:'flex'
+  },
+  search: {
+    marginTop: -10,
+    color: 'rgba(128, 128, 128, 0.37)',
+    fontWeight: 100
   },
   suggestionsContainerOpen: {
     position: 'absolute',
@@ -157,15 +164,35 @@ const styles = theme => ({
   textField: {
     width: '',
   },
-  div: {
-    display:'flex'
-  }
+  textFieldRoot: {
+    width: 'calc(100% - 24px)',
+    height: '30px',
+    padding: 0,
+    border: '1px solid #19CF86',
+    borderRadius: 21,
+    fontSize: 16,
+    backgroundColor: theme.palette.common.white,
+    display: 'flex',
+    alignItems: 'flex-start',
+    margin: '5px 0'
+  },
+  textFieldInput: {
+    width: 'calc(100% - 100px)',
+    padding: '5px 20px',
+    borderRadius: 50,
+    backgroundColor: theme.palette.common.white,
+    margin: '1px 0 0 1px',
+    fontSize: 15,
+
+  },
 });
 
 class IntegrationAutosuggest extends React.Component {
   state = {
     value: '',
     suggestions: [],
+    method: '',
+    suggestionSelected: false
   };
 
   handleSuggestionsFetchRequested = ({ value }) => {
@@ -180,12 +207,12 @@ class IntegrationAutosuggest extends React.Component {
     });
   };
 
-  handleChange = (event, { newValue }) => {
+  handleChange = (event, { newValue,method }) => {
     this.setState({
       value: newValue,
+      method: method
     });
   };
-
   render() {
     const { classes } = this.props;
 
@@ -205,16 +232,15 @@ class IntegrationAutosuggest extends React.Component {
         renderSuggestionsContainer={renderSuggestionsContainer}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
-        onSuggestionSelected={onSuggestionSelected}
+        onSuggestionSelected={(event,{suggestion,SuggestionValue})=>{}}
         inputProps={{
           autoFocus: true,
           classes,
           placeholder: 'Search',
           value: this.state.value,
-          onChange: this.handleChange,
+          onChange: this.handleChange
         }}
       />
-      <Link to='/search'><IconButton className='fa fa-search'></IconButton></Link>
     </div>  
     );
   }
@@ -225,3 +251,12 @@ IntegrationAutosuggest.propTypes = {
 };
 
 export default withStyles(styles)(IntegrationAutosuggest);
+// 'label + &': {
+//      marginTop: theme.spacing.unit * 3,
+ //   },
+
+ /*
+ 'label + &': {
+      marginTop: theme.spacing.unit * 3,
+    },
+ */
