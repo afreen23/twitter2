@@ -26,7 +26,6 @@ const styles = theme=>({
   },
   trends: {
     fontWeight: 'bold',
-
     paddingTop:10
   },
   link: {

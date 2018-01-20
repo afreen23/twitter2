@@ -139,7 +139,7 @@ class Adhaar extends React.Component {
           <Toolbar className={classes.middleBar}>
             <Typography type='display1'>#adhaar</Typography>
           </Toolbar>
-              <Toolbar className={classes.bottomBar}>
+          <Toolbar className={classes.bottomBar}>
             <Tabs value={value} onChange={this.handleChange} className={classes.leftNav} indicatorColor='accent'>
               <Tab value='one' label="Top" href='/search'className={classes.tab} />
               <Tab value='two' label="Latest" className={classes.tab}/>
