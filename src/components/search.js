@@ -136,7 +136,7 @@ function getSuggestions(value) {
 const styles = theme => ({
   container: { 
     position: 'relative',
-    height: 200,
+    height: 46,
   },
   div: {
     display:'flex'

@@ -52,7 +52,7 @@ function LeftDashboard(props) {
         <CardMedia
           className={classes.media}
           image="images/but-first-lets-code-1.png"
-          title="Contemplative Reptile"
+          title="profle Pic"
         />
         <CardHeader
           avatar={<Avatar alt="Profile Pic" src="images/profileimage.jpg" className={classes.avatar} />}

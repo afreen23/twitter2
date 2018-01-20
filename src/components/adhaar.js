@@ -104,7 +104,7 @@ const styles = theme => ({
 
 class Adhaar extends React.Component {
   state = {
-    value: 0,
+    value: 'one',
   };
   handleChange = (event, value) => {
     this.setState({ value });
@@ -120,9 +120,9 @@ class Adhaar extends React.Component {
            <Toolbar className={classes.toolbar}>
             <Tabs value={value} onChange={this.handleChange} className={classes.leftNav} indicatorColor='accent'>
               <Tab label="Home" href='/'className={classes.tab} />
-              <Tab label="Moments" className={classes.tab}/>
-              <Tab label="Messages" className={classes.tab}/>
-              <Tab label="Notifications" href="#basic-tabs" className={classes.tab} />
+              <Tab label="Moments" href='/' className={classes.tab}/>
+              <Tab label="Messages" href='/' className={classes.tab}/>
+              <Tab label="Notifications" href="/" className={classes.tab} />
             </Tabs>
             <div className={classes.twitter}>
              <Icon className="fa fa-twitter" color="accent"></Icon>
@@ -141,18 +141,18 @@ class Adhaar extends React.Component {
           </Toolbar>
               <Toolbar className={classes.bottomBar}>
             <Tabs value={value} onChange={this.handleChange} className={classes.leftNav} indicatorColor='accent'>
-              <Tab label="Top" href='/'className={classes.tab} />
-              <Tab label="Latest" className={classes.tab}/>
-              <Tab label="People" className={classes.tab}/>
-              <Tab label="Photos" href="#basic-tabs" className={classes.tab} />
-              <Tab label="Videos" href="#basic-tabs" className={classes.tab} />
-              <Tab label="News" href="#basic-tabs" className={classes.tab} />
-              <Tab label="Broadcast" href="#basic-tabs" className={classes.tab} />
+              <Tab value='one' label="Top" href='/search'className={classes.tab} />
+              <Tab value='two' label="Latest" className={classes.tab}/>
+              <Tab value='three'label="People" className={classes.tab}/>
+              <Tab value='four' label="Photos" href="#basic-tabs" className={classes.tab} />
+              <Tab value='five' label="Videos" href="#basic-tabs" className={classes.tab} />
+              <Tab value='six'  label="News" href="#basic-tabs" className={classes.tab} />
+              <Tab value='seven' label="Broadcast" href="#basic-tabs" className={classes.tab} />
             </Tabs>
           </Toolbar>
         </Grid>
         <Grid item xs={3}>
-          {value === 0 && <Grid container spacing={24}>
+          {value === 'one' && <Grid container spacing={24}>
                             <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
                             <Grid item xs={12}><FollowCard/></Grid>
                             <Grid item xs={12}><TrendsCard/></Grid>
@@ -170,7 +170,7 @@ class Adhaar extends React.Component {
                             </Grid>
                           </Grid>
                           }
-          {value === 1 && <Grid container spacing={24}>
+          {value === 'two' && <Grid container spacing={24}>
                             <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
                             <Grid item xs={12}><FollowCard/></Grid>
                             <Grid item xs={12}><TrendsCard/></Grid>
@@ -188,7 +188,7 @@ class Adhaar extends React.Component {
                             </Grid>
                           </Grid>
                           }
-        {value === 2 && <Grid container spacing={24}>
+        {value === 'three' && <Grid container spacing={24}>
                             <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
                             <Grid item xs={12}><FollowCard/></Grid>
                             <Grid item xs={12}><TrendsCard/></Grid>
@@ -206,7 +206,7 @@ class Adhaar extends React.Component {
                             </Grid>
                           </Grid>
                           }
-        {value === 3 && <Grid container spacing={24}>
+        {value === 'four' && <Grid container spacing={24}>
                             <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
                             <Grid item xs={12}><FollowCard/></Grid>
                             <Grid item xs={12}><TrendsCard/></Grid>
@@ -224,13 +224,69 @@ class Adhaar extends React.Component {
                             </Grid>
                           </Grid>
                           }
-
+        {value === 'five' && <Grid container spacing={24}>
+                            <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
+                            <Grid item xs={12}><FollowCard/></Grid>
+                            <Grid item xs={12}><TrendsCard/></Grid>
+                            <Grid item xs={12}>
+                              <Typography component='p' type='caption'>
+                                <a href='' className={classes.bottomLinks} style={{}}>&copy;2018 Twitter</a>
+                                <a href='' className={classes.bottomLinks}>About</a>
+                                <a href='' className={classes.bottomLinks}>Help Center</a>
+                                <a href='' className={classes.bottomLinks}>Terms</a><br/>
+                                <a href='' className={classes.bottomLinks}>Privacy Policy</a>
+                                <a href='' className={classes.bottomLinks}>Cookies</a>
+                                <a href='' className={classes.bottomLinks}>Ads</a>
+                                <a href='' className={classes.bottomLinks}>Info</a>
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                          }
+        {value === 'six' && <Grid container spacing={24}>
+                            <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
+                            <Grid item xs={12}><FollowCard/></Grid>
+                            <Grid item xs={12}><TrendsCard/></Grid>
+                            <Grid item xs={12}>
+                              <Typography component='p' type='caption'>
+                                <a href='' className={classes.bottomLinks} style={{}}>&copy;2018 Twitter</a>
+                                <a href='' className={classes.bottomLinks}>About</a>
+                                <a href='' className={classes.bottomLinks}>Help Center</a>
+                                <a href='' className={classes.bottomLinks}>Terms</a><br/>
+                                <a href='' className={classes.bottomLinks}>Privacy Policy</a>
+                                <a href='' className={classes.bottomLinks}>Cookies</a>
+                                <a href='' className={classes.bottomLinks}>Ads</a>
+                                <a href='' className={classes.bottomLinks}>Info</a>
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                          }
+        {value === 'seven' && <Grid container spacing={24}>
+                            <Grid item xs={12}><Card><CardContent><TitleOfCard title='Search Filters' subtitle1='Show'/></CardContent></Card></Grid>
+                            <Grid item xs={12}><FollowCard/></Grid>
+                            <Grid item xs={12}><TrendsCard/></Grid>
+                            <Grid item xs={12}>
+                              <Typography component='p' type='caption'>
+                                <a href='' className={classes.bottomLinks} style={{}}>&copy;2018 Twitter</a>
+                                <a href='' className={classes.bottomLinks}>About</a>
+                                <a href='' className={classes.bottomLinks}>Help Center</a>
+                                <a href='' className={classes.bottomLinks}>Terms</a><br/>
+                                <a href='' className={classes.bottomLinks}>Privacy Policy</a>
+                                <a href='' className={classes.bottomLinks}>Cookies</a>
+                                <a href='' className={classes.bottomLinks}>Ads</a>
+                                <a href='' className={classes.bottomLinks}>Info</a>
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                          }                          
         </Grid>
         <Grid item xs={6}>
-          {value === 0 && (<div><AdhaarProfile/><Tweet/></div>)}
-          {value === 1 && <Tweet/>}
-          {value === 2 && <Tweet/>}
-          {value === 3 && <Tweet/>}
+          {value === 'one' && (<div><AdhaarProfile/><Tweet/></div>)}
+          {value === 'two' && (<div><AdhaarProfile/><Tweet/></div>)}
+          {value === 'three' &&(<div><AdhaarProfile/><Tweet/></div>)}
+          {value === 'four' && (<div><AdhaarProfile/><Tweet/></div>)}
+          {value === 'five' && (<div><AdhaarProfile/><Tweet/></div>)}
+          {value === 'six' && (<div><AdhaarProfile/><Tweet/></div>)}
+          {value === 'seven' && (<div><AdhaarProfile/><Tweet/></div>)}
         </Grid>
       </Grid>
     );
