@@ -22,7 +22,7 @@ npm run start
 ```
 ## Idea behind 
 
-This project is based on [Create React App](https://github.com/facebookincubator/create-react-app).THis repository also satisfies two entry points required by Create React:
+This project is based on [Create React App](https://github.com/facebookincubator/create-react-app).This repository also satisfies two entry points required by Create React:
 * ```public/index.html``` for the browser
 * ```src/index.js``` for the server
 
