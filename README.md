@@ -26,5 +26,8 @@ This project is based on [Create React App](https://github.com/facebookincubator
 * ```public/index.html``` for the browser
 * ```src/index.js``` for the server
 
+## How it looks
+
+[Link](ui.dazed52.hasura-app.io)
 
 
