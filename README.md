@@ -4,7 +4,7 @@
 The clone includes two working pages:
 * Twitter home page
 * Search result page for searching #adhaar
-  * _You must type #[your search] in home page to get to this page_
+  * _You must type #[your search] and click in home page to get to this page_
 
 ## How to use
 
