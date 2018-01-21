@@ -1,5 +1,11 @@
 # Twitter clone made using material-ui and reactjs
----
+
+## About
+The clone includes two working pages:
+* Twitter home page
+* Search result page for searching #adhaar
+  * _You must type #[your search] in home page to get to this page_
+
 ## How to use
 
 1.Download or clone the repo and then
